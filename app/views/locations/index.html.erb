@@ -1,0 +1,54 @@
+<% console %>
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Locations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Zipcode</th>
+      <th>Street Address</th>
+      <th>City</th>
+      <th>Country Code</th>
+
+      <th>Current Weather</th>
+      <th>From cache?</th>
+      <th>Forecast</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |loc| %>
+      <tr>
+        <td><%= link_to loc.zipcode, loc %></td>
+        <td><%= loc.street %></td>
+        <td><%= loc.city %></td>
+        <td><%= loc.country_code %></td>
+        <td>
+        <%= if w = loc.now
+              "C: #{w['temp'].round(4)}, H/L: #{w['max'].round(4)} / #{w['min'].round(4)}"
+            else
+              link_to 'Retrieve', locations_refresh_path(loc)
+            end 
+        %></td>
+
+        <td><%= if !loc.now.nil? && loc.now['from_cache'] then "YES" else "no" end %></td>
+        <td><%= link_to 'Forecast', metrics_path(location_id: loc.id) %> </td>
+
+        <td><%= link_to 'Show', loc %></td>
+        <td><%= link_to 'Destroy', loc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</br>
+<div style="text-align: center">
+<%= link_to "New location", create_location_path %></br>
+<%= link_to "Weather Forecasts", metrics_path %>
+</br>
+<%= link_to "Back", :back %>
+</div>

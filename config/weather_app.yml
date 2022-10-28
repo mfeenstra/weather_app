@@ -1,0 +1,22 @@
+# Rails.root/config/weather_app.yml
+
+# these can be accessed though the CFG constant, per RAILS_ENV, below.
+#   ex: CFG.weather_url
+
+defaults: &default
+  weather_url:  'http://api.openweathermap.org/data/2.5/weather'
+  geo_url: 'http://api.openweathermap.org/geo/1.0/direct'
+  geo_zip_url: 'http://api.openweathermap.org/geo/1.0/zip'
+  loc_geo_url: 'http://api.openweathermap.org/geo/1.0/reverse'
+  forecast_url: 'http://api.openweathermap.org/data/2.5/forecast'
+  temperature_units:    'imperial'
+  cache_minutes: 30
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

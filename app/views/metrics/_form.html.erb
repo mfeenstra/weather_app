@@ -1,0 +1,47 @@
+<%= form_with(model: metric) do |form| %>
+  <% if metric.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(metric.errors.count, "error") %> prohibited this metric from being saved:</h2>
+
+      <ul>
+        <% metric.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :location_id, style: "display: block" %>
+    <%= form.number_field :location_id %>
+  </div>
+
+  <div>
+    <%= form.label :zipcode, style: "display: block" %>
+    <%= form.text_field :zipcode %>
+  </div>
+
+  <div>
+    <%= form.label :temp, style: "display: block" %>
+    <%= form.text_field :temp %>
+  </div>
+
+  <div>
+    <%= form.label :min, style: "display: block" %>
+    <%= form.text_field :min %>
+  </div>
+
+  <div>
+    <%= form.label :max, style: "display: block" %>
+    <%= form.text_field :max %>
+  </div>
+
+  <div>
+    <%= form.label :period, style: "display: block" %>
+    <%= form.number_field :period %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

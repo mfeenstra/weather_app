@@ -1,0 +1,29 @@
+table {
+  border-collapse: separate;
+  border-spacing: 0 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+th {
+  background-color: #4287f5;
+  color: black;
+}
+td {
+  text-align: center;
+  border: 1px solid black;
+  color: darkred;
+}
+tr td:last-child {
+  white-space: nowrap;
+}
+h1 {
+  color: darkblue;
+  text-align: center;
+}
+h2 {
+  color: #4287f5;
+}
+
+div {
+  text-align: center;
+}

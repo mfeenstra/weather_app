@@ -1,0 +1,42 @@
+<% console %>
+
+<p style="color: green"><%= notice %></p>
+
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th> Location </th>
+        <th> Zipcode </th>
+        <th> Temp </th>
+        <th> Min </th>
+        <th> Max </th>
+        <th> Period </th>
+        <th> Date / Time </th>
+        <!-- <th colspan="2"></th> -->
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @metrics.each do |m| %>
+        <tr>
+          <td><%= link_to Location.find(m.location_id).city, Location.find(m.location_id) %></td>
+          <td><%= m.zipcode %></td>          
+          <td><%= m.temp %></td>
+          <td><%= m.min %></td>
+          <td><%= m.max %></td>
+          <td><%= m.period %></td>
+          <td><%= m.dt_txt.localtime unless m.dt_txt.nil? %></td>
+          <!-- <td><#%= link_to 'Edit', m %></td> -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>      
+</div>
+</br></br>
+<div style="text-align: center">
+<%= link_to "Back", :back %>
+</div>
+
+                                                                                                                                                                                                                                                
